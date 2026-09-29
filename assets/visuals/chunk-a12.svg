@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" width="280" height="210">
+  <defs>
+    <linearGradient id="bgGrad_a12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf5ff"/>
+      <stop offset="100%" stop-color="#e9d5ff"/>
+    </linearGradient>
+    <filter id="shadow_a12" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Arrière-plan stylé -->
+  <rect width="280" height="210" rx="16" fill="url(#bgGrad_a12)"/>
+  <rect x="1" y="1" width="278" height="208" rx="15" fill="none" stroke="#9333ea" stroke-opacity="0.2" stroke-width="1.5"/>
+
+  <!-- Trame de fond subtile -->
+  <circle cx="240" cy="30" r="60" fill="#a855f7" fill-opacity="0.08"/>
+  <circle cx="30" cy="180" r="50" fill="#a855f7" fill-opacity="0.06"/>
+
+  <!-- Illustration vectorielle sémantique dédiée -->
+  
+        <!-- Balanced Scales of Nuance -->
+        <circle cx="140" cy="85" r="44" fill="#a855f7" fill-opacity="0.15"/>
+        <!-- Poteau central -->
+        <line x1="140" y1="52" x2="140" y2="115" stroke="#7e22ce" stroke-width="4" stroke-linecap="round"/>
+        <line x1="125" y1="115" x2="155" y2="115" stroke="#7e22ce" stroke-width="4" stroke-linecap="round"/>
+        <!-- Fléau balance -->
+        <line x1="105" y1="65" x2="175" y2="65" stroke="#7e22ce" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- Plateaux -->
+        <path d="M92 88 Q105 95 118 88 Z" fill="#c084fc" stroke="#7e22ce" stroke-width="2"/>
+        <line x1="105" y1="65" x2="105" y2="88" stroke="#a855f7" stroke-width="1.5"/>
+        <path d="M162 88 Q175 95 188 88 Z" fill="#c084fc" stroke="#7e22ce" stroke-width="2"/>
+        <line x1="175" y1="65" x2="175" y2="88" stroke="#a855f7" stroke-width="1.5"/>
+      
+
+  <!-- Badge Catégorie / Métaphore en haut à gauche -->
+  <g transform="translate(14, 14)">
+    <rect width="130" height="24" rx="12" fill="#ffffff" fill-opacity="0.9" filter="url(#shadow_a12)"/>
+    <text x="10" y="16" font-family="'Space Grotesk', system-ui, sans-serif" font-size="11" font-weight="700" fill="#9333ea">
+      ⚖️ Nuance & Bilan (PREP: P)
+    </text>
+  </g>
+
+  <!-- Pastille Jour en haut à droite -->
+  <g transform="translate(210, 14)">
+    <rect width="56" height="24" rx="12" fill="#a855f7" filter="url(#shadow_a12)"/>
+    <text x="28" y="16" font-family="'Space Grotesk', system-ui, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">
+      Jour 14
+    </text>
+  </g>
+
+  <!-- Bannière inférieure contextuelle avec traduction naturelle -->
+  <g transform="translate(12, 146)">
+    <rect width="256" height="52" rx="12" fill="#ffffff" fill-opacity="0.96" filter="url(#shadow_a12)"/>
+    <rect x="0" y="0" width="256" height="52" rx="12" fill="none" stroke="#9333ea" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- Texte d'expression tronqué proprement -->
+    <text x="14" y="22" font-family="'Space Grotesk', system-ui, sans-serif" font-size="12" font-weight="800" fill="#0f172a">
+      « So all things considered, »
+    </text>
+    <!-- Traduction en français -->
+    <text x="14" y="40" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#9333ea">
+      ➔ Donc tout bien considéré,
+    </text>
+  </g>
+</svg>

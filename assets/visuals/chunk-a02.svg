@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" width="280" height="210">
+  <defs>
+    <linearGradient id="bgGrad_a02" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5f3ff"/>
+      <stop offset="100%" stop-color="#ddd6fe"/>
+    </linearGradient>
+    <filter id="shadow_a02" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Arrière-plan stylé -->
+  <rect width="280" height="210" rx="16" fill="url(#bgGrad_a02)"/>
+  <rect x="1" y="1" width="278" height="208" rx="15" fill="none" stroke="#7c3aed" stroke-opacity="0.2" stroke-width="1.5"/>
+
+  <!-- Trame de fond subtile -->
+  <circle cx="240" cy="30" r="60" fill="#8b5cf6" fill-opacity="0.08"/>
+  <circle cx="30" cy="180" r="50" fill="#8b5cf6" fill-opacity="0.06"/>
+
+  <!-- Illustration vectorielle sémantique dédiée -->
+  
+        <!-- Speech Bubble with Core Star / Vision -->
+        <circle cx="140" cy="85" r="44" fill="#8b5cf6" fill-opacity="0.15"/>
+        <path d="M105 60 C105 50 175 50 175 60 C175 90 155 95 145 95 L135 110 L135 95 C115 95 105 85 105 60 Z" fill="#ffffff" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round"/>
+        <!-- Étoile de conviction -->
+        <polygon points="140,65 143,73 151,73 145,78 147,86 140,81 133,86 135,78 129,73 137,73" fill="#8b5cf6"/>
+      
+
+  <!-- Badge Catégorie / Métaphore en haut à gauche -->
+  <g transform="translate(14, 14)">
+    <rect width="130" height="24" rx="12" fill="#ffffff" fill-opacity="0.9" filter="url(#shadow_a02)"/>
+    <text x="10" y="16" font-family="'Space Grotesk', system-ui, sans-serif" font-size="11" font-weight="700" fill="#7c3aed">
+      🗣️ Avis & Perspective
+    </text>
+  </g>
+
+  <!-- Pastille Jour en haut à droite -->
+  <g transform="translate(210, 14)">
+    <rect width="56" height="24" rx="12" fill="#8b5cf6" filter="url(#shadow_a02)"/>
+    <text x="28" y="16" font-family="'Space Grotesk', system-ui, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">
+      Jour 8
+    </text>
+  </g>
+
+  <!-- Bannière inférieure contextuelle avec traduction naturelle -->
+  <g transform="translate(12, 146)">
+    <rect width="256" height="52" rx="12" fill="#ffffff" fill-opacity="0.96" filter="url(#shadow_a02)"/>
+    <rect x="0" y="0" width="256" height="52" rx="12" fill="none" stroke="#7c3aed" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- Texte d'expression tronqué proprement -->
+    <text x="14" y="22" font-family="'Space Grotesk', system-ui, sans-serif" font-size="12" font-weight="800" fill="#0f172a">
+      « The way I see it, »
+    </text>
+    <!-- Traduction en français -->
+    <text x="14" y="40" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#7c3aed">
+      ➔ La façon dont je vois les chose…
+    </text>
+  </g>
+</svg>
