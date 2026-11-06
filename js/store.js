@@ -21,7 +21,7 @@ function storage() {
 }
 
 function load() {
-  const fresh = { done: [], slow: false, srs: {}, favs: [], activity: [], scores: {} };
+  const fresh = { done: [], slow: false, srs: {}, favs: [], activity: [], scores: {}, listening: {} };
   const ls = storage();
   if (!ls) return fresh;
   try {
@@ -100,6 +100,13 @@ export function toggleFav(id) {
 // ─── Exercices ───────────────────────────────────────────────────────────
 export function saveScore(day, score) {
   state.scores[day] = Math.max(state.scores[day] ?? 0, score);
+  markActive(false);
+  save();
+}
+
+// Meilleur score aux questions du journal de Modou (étape « Écoute »).
+export function saveListening(day, score) {
+  state.listening[day] = Math.max(state.listening[day] ?? 0, score);
   markActive(false);
   save();
 }

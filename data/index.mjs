@@ -3,6 +3,7 @@ import part1 from './jours-01-10.mjs';
 import part2 from './jours-11-20.mjs';
 import part3 from './jours-21-30.mjs';
 import words from './mots.mjs';
+import journal from './journal.mjs';
 
 export const chapters = [
   { id: 1, title: "Les bases", subtitle: "Appels vidéo avant le départ" },
@@ -13,7 +14,7 @@ export const chapters = [
   { id: 6, title: "Week-ends et imprévus", subtitle: "Sorties, urgence et départ" },
 ];
 
-export const lessons = [...part1, ...part2, ...part3].map(lesson => ({ ...lesson, words: words[lesson.day] ?? [] }));
+export const lessons = [...part1, ...part2, ...part3].map(lesson => ({ ...lesson, words: words[lesson.day] ?? [], journal: journal[lesson.day] ?? null }));
 
 export function getLesson(day) {
   return lessons.find(lesson => lesson.day === day);

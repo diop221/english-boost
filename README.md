@@ -5,7 +5,7 @@ sénégalais, pendant son mois de mission à Londres : du premier appel vidéo j
 
 ## Ce qu'on fait chaque jour
 
-Chaque jour est organisé en 4 étapes :
+Chaque jour est organisé en 4 étapes, plus une 5ᵉ :
 
 1. **10 mots animés** : chaque mot est présenté en motion design. L'emoji bouge selon le sens du mot
    (l'avion s'envole, la pluie tombe, le froid fait trembler), les lettres apparaissent une à une pendant
@@ -16,6 +16,9 @@ Chaque jour est organisé en 4 étapes :
    personnages parlent, et c'est à toi de dire les répliques de Modou au micro.
 4. **Exercices** : 10 questions (choisir le bon mot, écrire le mot entendu, remettre une phrase dans l'ordre),
    avec un score et des étoiles.
+5. **Le journal de Modou** : chaque jour, Modou raconte sa journée dans un épisode audio
+   qui reprend le vocabulaire du jour. On écoute sans lire, on répond à 6 questions (choix ou vrai/faux), puis le texte
+   apparaît avec sa traduction, et chaque erreur renvoie à la phrase qui contenait la réponse.
 
 ## Pour ne pas oublier
 
@@ -55,13 +58,15 @@ la logique des révisions, la comparaison au micro et la liste des fichiers disp
 
 ```
 index.html, styles.css, app.js   page, styles (classés par section), navigation entre les pages
-data/                            contenu : jours, dialogues, expressions (jours-*.mjs) et mots (mots.mjs)
+data/                            contenu : jours, dialogues, expressions (jours-*.mjs), mots (mots.mjs)
+                                 et journal de Modou (journal.mjs)
 js/store.js                      progression, révisions espacées, série, favoris
 js/speech.js                     voix (synthèse) et micro (reconnaissance vocale)
 js/match.js                      comparaison tolérante de ce qui est dit ou écrit
 js/ui.js                         outils d'affichage : boutons, retours, confettis, animations
 js/studio.js                     animation des mots du jour
 js/roleplay.js                   mode « Joue Modou »
+js/journal.js                    étape « Écoute » : lecteur du journal et questions
 js/views/                        une page par fichier : accueil, jour, exercices, révisions, favoris, recherche
 sw.js, manifest.webmanifest      installation sur téléphone et mode hors ligne
 ```

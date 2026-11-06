@@ -38,6 +38,31 @@ for (const lesson of lessons) for (const [en, fr] of lesson.words) {
 assert.deepEqual(problems, [], '\n' + problems.join('\n'));
 console.log(`OK : ${lessons.length} jours, ${lessons.reduce((n, l) => n + l.expressions.length, 0)} expressions, toutes présentes dans leur dialogue, ${lessons.reduce((n, l) => n + l.words.length, 0)} mots.`);
 
+// ─── Journal de Modou (étape Écoute) ───
+import journal from './data/journal.mjs';
+const jProblems = [];
+for (const [day, ep] of Object.entries(journal)) {
+  const lesson = lessons.find(l => l.day === Number(day));
+  const where = `Journal du jour ${day}`;
+  if (!lesson) { jProblems.push(`${where} : ce jour n'existe pas`); continue; }
+  if (!ep.title?.[0] || !ep.title?.[1]) jProblems.push(`${where} : titre incomplet`);
+  if (ep.text.length < 8) jProblems.push(`${where} : texte trop court (${ep.text.length} phrases)`);
+  ep.text.forEach(([en, fr], i) => { if (!en || !fr) jProblems.push(`${where} : phrase ${i} sans traduction`); });
+  if (ep.questions.length < 5) jProblems.push(`${where} : ${ep.questions.length} questions au lieu d'au moins 5`);
+  for (const q of ep.questions) {
+    if (!q.q || !q.fr) jProblems.push(`${where} : question sans traduction`);
+    if (!ep.text[q.line]) jProblems.push(`${where} : « ${q.q} » renvoie à une phrase inexistante`);
+    if ('tf' in q ? typeof q.tf !== 'boolean' : !(q.a?.length >= 2)) jProblems.push(`${where} : « ${q.q} » sans réponses valables`);
+    if (q.a && new Set(q.a).size !== q.a.length) jProblems.push(`${where} : « ${q.q} » a deux réponses identiques`);
+  }
+  // Le texte doit réutiliser le vocabulaire du jour.
+  const full = ep.text.map(([en]) => en).join(' ');
+  const reused = [...lesson.words.map(w => w[0]), ...lesson.expressions.map(e => e[0])].filter(x => contains(full, x));
+  if (reused.length < 8) jProblems.push(`${where} : seulement ${reused.length} mots ou expressions du jour réutilisés (8 attendus)`);
+}
+assert.deepEqual(jProblems, [], '\n' + jProblems.join('\n'));
+console.log(`OK : ${Object.keys(journal).length} épisodes du journal de Modou.`);
+
 // ─── Exercices : chaque jour a assez de répliques courtes à remettre dans l'ordre ───
 const fits = ([, en]) => en.split(' ').length >= 4 && en.split(' ').length <= 10;
 for (const lesson of lessons) {
