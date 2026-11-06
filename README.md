@@ -1,50 +1,69 @@
-# English Boost · Fluency & Accelerated English
+# English Boost
 
-Plateforme interactive d'accélération de l'anglais oral et de conversation : 15 expressions pratiques par jour, structuration de la pensée (**méthode PREP**), entraînement oral solo (**Conversation Lab**), dialogues réalistes du quotidien, répétition espacée et entraînement vocal au micro.
+30 jours, 30 situations réelles pour parler anglais. On suit Modou, développeur web
+sénégalais, pendant son mois de mission à Londres : du premier appel vidéo jusqu'aux au revoir.
 
----
+## Ce qu'on fait chaque jour
 
-## Les Piliers de l'Application
+Chaque jour est organisé en 4 étapes :
 
-1. **⚡ Parcours Guidé Quotidien (15 expressions / jour)** :
-   - **Phase 1 (Jours 1-7) · Les Fondations** : 105 expressions de survie (se présenter, réagir, gagner du temps, opinions simples, raconter, poser des questions, clore avec tact).
-   - **Phase 2 (Jours 8-15) · Structurer sa pensée** : 120 connecteurs d'argumentation pour exprimer un point net, expliquer une cause, illustrer et nuancer.
-   - **Phase 3 (Jours 16-25) · Conversation Lab** : Déblocage de l'entraînement solo interactif.
-   - **Phase 4 (Jours 26-30) · Mode Libre & Confiance** : Tous les modules accessibles pour s'entraîner sans limite.
+1. **10 mots animés** : chaque mot est présenté en motion design. L'emoji bouge selon le sens du mot
+   (l'avion s'envole, la pluie tombe, le froid fait trembler), les lettres apparaissent une à une pendant
+   que le mot est prononcé, puis viennent la traduction et une phrase d'exemple. La série se termine par
+   des cartes à retourner pour vérifier ce qu'on a retenu.
+2. **10 expressions** à écouter, puis à répéter **au micro** : le site dit si c'est bien prononcé.
+3. **La scène** : le dialogue du jour, avec les expressions surlignées. En mode **🎭 Joue Modou**, les autres
+   personnages parlent, et c'est à toi de dire les répliques de Modou au micro.
+4. **Exercices** : 10 questions (choisir le bon mot, écrire le mot entendu, remettre une phrase dans l'ordre),
+   avec un score et des étoiles.
 
-2. **🗓️ Navigateur de Jours Débloqués** :
-   - Accédez à n'importe quel jour passé ou débloqué quand vous le souhaitez via le sélecteur `Jour 1 / 30`.
-   - Bouton de réinitialisation instantanée pour recommencer au Jour 1 à tout moment.
-   - Validation de fin de quiz permettant de passer directement au jour suivant.
+## Pour ne pas oublier
 
-3. **🎙️ Speaking Lab (Méthode PREP)** :
-   - Inspiré de la méthode *« How to organize your thoughts and answer any question in English »*.
-   - Guide pas-à-pas : **P**oint (Avis net) ➔ **R**eason (Pourquoi) ➔ **E**xample (Cas concret) ➔ **P**oint (Conclusion).
-   - Chronomètre de parole de 60s avec reconnaissance vocale et transcription directe au micro.
+- **Révisions espacées** : terminer un jour ajoute ses 20 mots et expressions aux révisions.
+  Chacun revient 1, 3, 7, 21 puis 60 jours plus tard. Une erreur le fait revenir dès le lendemain.
+- **Série 🔥** : le nombre de jours d'affilée où tu as appris quelque chose.
+- **Favoris ⭐** : une liste perso de mots difficiles, qu'on peut réviser à part.
+- **Recherche** : retrouver n'importe lequel des 600 mots et expressions, en anglais ou en français.
 
-4. **🗣️ Conversation Lab (Entraînement Solo Intégré)** :
-   - **Self-Talk** : Décrivez votre routine du matin, cuisinez en anglais, planifiez et résumez votre journée.
-   - **Role-Play** : Entretiens d'embauche, commande au restaurant, service client, urgences.
-   - **Mirror Technique** : Discours de 60s devant le miroir pour la confiance physique et l'élocution.
-   - **Shadowing** : Entraînez votre rythme, votre vitesse et le « connected speech ».
+La progression est enregistrée dans le navigateur (localStorage). Il n'y a ni compte ni serveur.
 
-5. **💬 Mini-Dialogues Immersifs** :
-   - Échanges authentiques de la vie quotidienne avec écoute audio réplique par réplique.
+## Sur téléphone et hors ligne
 
-6. **📇 Vocabulaire classique (Optionnel)** :
-   - 300 mots B2 avec système de répétition espacée (SRS) consultables en accordéon repliable.
+Le site s'installe sur l'écran d'accueil d'un téléphone (menu du navigateur → « Ajouter à l'écran d'accueil »)
+et reste utilisable sans connexion une fois chargé.
 
----
+Le micro utilise la reconnaissance vocale du navigateur : elle marche dans **Chrome** et **Edge**.
+Dans les autres navigateurs, les boutons micro sont masqués et tout le reste fonctionne.
 
-## Lancer l'application
+## Lancer le projet
 
 ```bash
-python3 -m http.server 5173
+npm start
 ```
-Puis ouvrez dans votre navigateur : **http://localhost:5173**.
 
-## Tests unitaires
+Puis ouvrir **http://localhost:5173**. Le serveur (`serve.py`) empêche le navigateur de garder les fichiers
+en cache, donc un simple rechargement suffit pour voir chaque modification.
 
 ```bash
 npm test
 ```
+
+Vérifie le contenu (30 jours, 10 mots et 10 expressions par jour, chaque expression présente dans son dialogue…),
+la logique des révisions, la comparaison au micro et la liste des fichiers disponibles hors ligne.
+
+## Organisation du code
+
+```
+index.html, styles.css, app.js   page, styles (classés par section), navigation entre les pages
+data/                            contenu : jours, dialogues, expressions (jours-*.mjs) et mots (mots.mjs)
+js/store.js                      progression, révisions espacées, série, favoris
+js/speech.js                     voix (synthèse) et micro (reconnaissance vocale)
+js/match.js                      comparaison tolérante de ce qui est dit ou écrit
+js/ui.js                         outils d'affichage : boutons, retours, confettis, animations
+js/studio.js                     animation des mots du jour
+js/roleplay.js                   mode « Joue Modou »
+js/views/                        une page par fichier : accueil, jour, exercices, révisions, favoris, recherche
+sw.js, manifest.webmanifest      installation sur téléphone et mode hors ligne
+```
+
+Pour ajouter un fichier JavaScript, l'ajouter aussi à la liste `CORE` de `sw.js` (le test le vérifie).
