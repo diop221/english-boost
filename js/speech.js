@@ -31,7 +31,12 @@ export function speak(text, voiceIndex = 0) {
   });
 }
 
+// Compte les arrêts de la voix : une lecture en plusieurs phrases s'interrompt
+// si quelqu'un d'autre (micro, autre bouton) a coupé la parole entre-temps.
+let stops = 0;
+export const stopCount = () => stops;
 export function stopSpeaking() {
+  stops++;
   if (canSpeak) speechSynthesis.cancel();
 }
 

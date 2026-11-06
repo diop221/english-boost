@@ -1,12 +1,12 @@
 // Service worker : rend l'application utilisable hors ligne.
 // Stratégie « réseau d'abord » : on charge toujours la dernière version quand
 // internet est là, et on garde une copie pour les moments sans connexion.
-const CACHE = 'english-boost-v3';
+const CACHE = 'english-boost-v4';
 const CORE = [
   './', 'index.html', 'styles.css', 'app.js', 'text.mjs', 'manifest.webmanifest',
   'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png',
-  'data/index.mjs', 'data/mots.mjs', 'data/jours-01-10.mjs', 'data/jours-11-20.mjs', 'data/jours-21-30.mjs',
-  'js/store.js', 'js/speech.js', 'js/match.js', 'js/ui.js', 'js/studio.js', 'js/roleplay.js',
+  'data/index.mjs', 'data/mots.mjs', 'data/jours-01-10.mjs', 'data/jours-11-20.mjs', 'data/jours-21-30.mjs', 'data/journal.mjs',
+  'js/store.js', 'js/speech.js', 'js/match.js', 'js/ui.js', 'js/studio.js', 'js/roleplay.js', 'js/journal.js',
   'js/views/home.js', 'js/views/lesson.js', 'js/views/exercises.js', 'js/views/review.js',
   'js/views/favorites.js', 'js/views/search.js',
 ];

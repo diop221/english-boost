@@ -1,18 +1,21 @@
-// Page d'un jour, en 4 étapes : mots → expressions → scène → exercices.
+// Page d'un jour, en 4 étapes : mots → expressions → scène → exercices,
+// plus une 5e, « Écoute » (journal de Modou), pour les jours qui en ont un.
 import { chapters, getLesson, lessonItemIds } from '../../data/index.mjs';
 import { state, isDone, setDone } from '../store.js';
 import { speak, stopSpeaking, canListen } from '../speech.js';
 import { esc, highlight, playBtn, micBtn, favBtn, toast, confetti, icons } from '../ui.js';
 import { openStudio } from '../studio.js';
 import { openRoleplay } from '../roleplay.js';
+import { journalSection, setupJournal } from '../journal.js';
 
-const STEPS = [['mots', 'Mots'], ['expressions', 'Expressions'], ['scene', 'Scène'], ['exercices', 'Exercices']];
+const BASE_STEPS = [['mots', 'Mots'], ['expressions', 'Expressions'], ['scene', 'Scène'], ['exercices', 'Exercices']];
 
 export function renderLesson(app, lesson, focus) {
   const chapter = chapters.find(c => c.id === lesson.chapter);
   const prev = getLesson(lesson.day - 1), next = getLesson(lesson.day + 1);
   const hideFr = document.body.classList.contains('hide-fr');
   const score = state.scores[lesson.day];
+  const STEPS = lesson.journal ? [...BASE_STEPS, ['ecoute', 'Écoute']] : BASE_STEPS;
 
   app.innerHTML = `
     <a class="back" href="#/">← Tous les jours</a>
@@ -104,6 +107,8 @@ export function renderLesson(app, lesson, focus) {
       </a>
     </section>
 
+    ${lesson.journal ? journalSection(lesson, 5) : ''}
+
     <section class="finish">
       <button id="doneBtn" class="btn btn-lg ${isDone(lesson.day) ? 'btn-ghost' : 'btn-primary'}" type="button">
         ${isDone(lesson.day) ? '✓ Jour terminé' : 'J\'ai terminé ce jour'}
@@ -117,12 +122,13 @@ export function renderLesson(app, lesson, focus) {
   `;
 
   // ─── Lecture de la scène ───
-  let playback = 0;
+  let playback = 0, stopJournal = () => {};
   const lineEls = [...app.querySelectorAll('.line')];
   const codes = Object.keys(lesson.cast);
   const sceneBtn = app.querySelector('#playSceneBtn');
   function stopScene() {
     playback++;
+    stopJournal();
     stopSpeaking();
     lineEls.forEach(el => el.classList.remove('is-playing'));
     sceneBtn.innerHTML = `${icons.play} Écouter`;
@@ -148,6 +154,11 @@ export function renderLesson(app, lesson, focus) {
     playLines(lineEls.map((_, i) => i));
   });
   app.querySelectorAll('[data-line-play]').forEach(btn => btn.addEventListener('click', () => playLines([Number(btn.dataset.linePlay)])));
+
+  if (lesson.journal) {
+    // La scène et le journal ne parlent jamais en même temps.
+    stopJournal = setupJournal(app.querySelector('#ecoute'), lesson, stopScene);
+  }
 
   app.querySelector('#studioBtn').addEventListener('click', () => { stopScene(); openStudio(lesson, 0); });
   app.querySelectorAll('[data-word]').forEach(btn => btn.addEventListener('click', () => { stopScene(); openStudio(lesson, Number(btn.dataset.word)); }));

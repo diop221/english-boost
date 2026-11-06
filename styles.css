@@ -373,6 +373,52 @@ mark { background: var(--mark); color: var(--mark-ink); border-radius: 4px; padd
 .practice-text small { color: var(--muted); }
 .practice-best { color: var(--good) !important; font-weight: 700; }
 
+/* Journal de Modou (étape Écoute) */
+.jr-card { margin-top: 16px; padding: 18px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.jr-player { display: flex; align-items: center; gap: 16px; }
+.jr-play { width: 64px; height: 64px; margin: 0; flex: none; }
+.jr-play svg { width: 24px; height: 24px; margin-left: 3px; }
+.jr-play:disabled { opacity: 0.4; }
+.jr-pause { font-size: 1.1rem; letter-spacing: -2px; }
+.jr-info { flex: 1; min-width: 0; }
+.jr-episode { font-weight: 700; }
+.jr-episode-fr { color: var(--muted); font-size: 0.88rem; }
+.jr-bar { height: 6px; margin: 10px 0 6px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.jr-bar span { display: block; width: 0; height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--accent), var(--good)); transition: width 0.5s var(--ease); }
+.jr-status { color: var(--muted); font-size: 0.85rem; }
+.jr-reveal { margin-top: 14px; }
+.jr-text { display: flex; flex-direction: column; gap: 4px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+.jr-text.is-revealed { animation: page-in 0.5s var(--ease); }
+.jr-line, .jr-proof-line {
+  display: flex; flex-direction: column; gap: 2px; width: 100%; padding: 8px 12px; border-radius: 12px;
+  border: 1px solid transparent; background: none; color: var(--ink); font: inherit; text-align: left; cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.jr-line:hover, .jr-proof-line:hover { background: var(--surface-2); }
+.jr-line.is-playing { background: var(--accent-soft); border-color: var(--accent); }
+.jr-en { font-size: 1.02rem; }
+.jr-fr { color: var(--muted); font-size: 0.88rem; }
+.hide-fr .jr-text .jr-fr { display: none; }
+.jr-questions { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 18px; padding: 0; }
+.jr-q { padding: 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); transition: border-color 0.3s; }
+.jr-q.is-right { border-color: color-mix(in srgb, var(--good) 45%, transparent); }
+.jr-q.is-wrong { border-color: color-mix(in srgb, var(--bad) 45%, transparent); }
+.jr-q-type { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.jr-q-en { font-weight: 650; font-size: 1.05rem; margin-top: 4px; }
+.jr-q-fr { color: var(--muted); font-size: 0.88rem; }
+.jr-options { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.jr-option { flex: 1 1 180px; padding: 10px 14px; font-size: 0.95rem; }
+.jr-option small { color: var(--muted); font-weight: 400; }
+.jr-option.is-picked { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+.jr-proof { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line); }
+.jr-proof-label { font-size: 0.85rem; font-weight: 700; color: var(--bad); }
+.jr-q.is-right .jr-proof-label { color: var(--good); }
+.jr-proof-line { margin-top: 4px; background: var(--surface-2); }
+.jr-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 16px; }
+.jr-score { font-size: 1.4rem; font-weight: 800; display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px; }
+.jr-score small { font-size: 0.9rem; font-weight: 500; color: var(--muted); }
+.jr-score.is-perfect { color: var(--good); }
+
 .finish { margin-top: 52px; padding-top: 28px; border-top: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
 .pager { width: 100%; display: flex; justify-content: space-between; gap: 12px; font-size: 0.9rem; margin-top: 18px; }
 .pager a { text-decoration: none; font-weight: 600; }
